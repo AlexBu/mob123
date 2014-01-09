@@ -1,0 +1,341 @@
+﻿1.
+send:
+GET https://mobile.12306.cn/otsmobile/apps/services/reach HTTP/1.1
+Host: mobile.12306.cn
+Proxy-Connection: keep-alive
+Accept-Encoding: gzip, deflate
+Accept: */*
+Accept-Language: en-us
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11B554a (359274384)/Worklight/6.0.0
+
+response:
+HTTP/1.1 200 OK
+Date: Thu, 09 Jan 2014 13:35:18 GMT
+Server: ngx_openresty/1.4.3.6
+Content-Type: text/html
+X-Powered-By: Servlet/3.0
+P3P: policyref="/w3c/p3p.xml", CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"
+Content-Language: zh-CN
+Set-Cookie: JSESSIONID=00003BGCKYkhIaceaoertNzGTZR:18apno2sk; Path=/; HttpOnly
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Cache-Control: no-cache="set-cookie, set-cookie2"
+Set-Cookie: BIGipServerworklight=2664890634.56355.0000; path=/
+Set-Cookie: BIGipServernginxformobile=3185115402.50215.0000; path=/
+X-Via: 1.1 yzdx124:0 (Cdn Cache Server V2.0)
+Connection: keep-alive
+Content-Length: 2
+
+OK
+
+
+//information:
+//cookie
+
+2.
+send:
+POST https://mobile.12306.cn/otsmobile/apps/services/api/MobileTicket/iphone/init HTTP/1.1
+Host: mobile.12306.cn
+Accept-Language: zh_CN
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11B554a (359274384)/Worklight/6.0.0
+x-wl-platform-version: 6.0.0
+X-Requested-With: XMLHttpRequest
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+x-wl-app-version: 1.21
+Accept: text/javascript, text/html, application/xml, text/xml, */*
+Connection: keep-alive
+Cookie: BIGipServernginxformobile=3185115402.50215.0000; BIGipServerworklight=2664890634.56355.0000; JSESSIONID=00003BGCKYkhIaceaoertNzGTZR:18apno2sk
+Proxy-Connection: keep-alive
+Content-Length: 73
+Origin: file://
+Accept-Encoding: gzip, deflate
+
+skin=default&skinLoaderChecksum=&isAjaxRequest=true&x=0.24715037690475583
+
+
+//x may be a random float number
+//use cookie in reverse order
+//new field x-wl-app-version: 1.21
+// use new field x-wl-platform-version
+
+
+respond:
+HTTP/1.1 401 Unauthorized
+Date: Thu, 09 Jan 2014 13:35:18 GMT
+Server: ngx_openresty/1.4.3.6
+Content-Type: application/json; charset=UTF-8
+Content-Length: 191
+X-Powered-By: Servlet/3.0
+P3P: policyref="/w3c/p3p.xml", CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"
+WWW-Authenticate: WL-Composite-Challenge
+Cache-Control: no-cache, no-store, must-revalidate
+Expires: Sat, 26 Jul 1997 05:00:00 GMT
+Content-Language: zh-CN
+Set-Cookie: WL_PERSISTENT_COOKIE=17433682-12bc-4ec9-a9eb-e85d8aca758b; Expires=Fri, 09-Jan-15 13:35:17 GMT; Path=/mobileticket
+X-Via: 1.1 yzdx124:0 (Cdn Cache Server V2.0)
+Connection: close
+
+/*-secure-
+{"challenges":{"wl_authenticityRealm":{"WL-Challenge-Data":"irq5os2ghq5hj954c74trau6k2+23.507-9.852-31.807 "},"wl_antiXSRFRealm":{"WL-Instance-Id":"vi3pgdstvu5n9s46nkps1kre85"}}}*/
+
+
+//new cookie
+//wl persistent cookie
+//two challenges contained in return back data package
+//wl_authenticityRealm and wl_antiXSRFRealm
+
+
+3.
+senx-wl-app-version: 1.21d:
+POST https://mobile.12306.cn/otsmobile/apps/services/api/MobileTicket/iphone/init HTTP/1.1
+Host: mobile.12306.cn
+Accept-Language: zh_CN
+WL-Instance-Id: vi3pgdstvu5n9s46nkps1kre85
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11B554a (359274384)/Worklight/6.0.0
+Proxy-Connection: keep-alive
+x-wl-platform-version: 6.0.0
+X-Requested-With: XMLHttpRequest
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+x-wl-app-version: 1.21
+Accept: text/javascript, text/html, application/xml, text/xml, */*
+Connection: keep-alive
+Cookie: BIGipServernginxformobile=3185115402.50215.0000; BIGipServerworklight=2664890634.56355.0000; JSESSIONID=00003BGCKYkhIaceaoertNzGTZR:18apno2sk
+Authorization: {"wl_authenticityRealm":"8562a4a760deecb1a52b49bd5186fe185933030e"}
+Content-Length: 72
+Origin: file://
+Accept-Encoding: gzip, deflate
+
+skin=default&skinLoaderChecksum=&isAjaxRequest=true&x=0.5348978957626969
+
+
+// use new field wl-instance-id from last result
+// use new field authorization
+// x is another random float number
+
+respond:
+HTTP/1.1 401 Unauthorized
+Date: Thu, 09 Jan 2014 13:35:18 GMT
+Server: ngx_openresty/1.4.3.6
+Content-Type: application/json; charset=UTF-8
+Content-Length: 99
+X-Powered-By: Servlet/3.0
+P3P: policyref="/w3c/p3p.xml", CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"
+WWW-Authenticate: WL-Composite-Challenge
+Cache-Control: no-cache, no-store, must-revalidate
+Expires: Sat, 26 Jul 1997 05:00:00 GMT
+Content-Language: zh-CN
+X-Via: 1.1 yzdx124:0 (Cdn Cache Server V2.0)
+Connection: close
+
+/*-secure-
+{"challenges":{"wl_deviceNoProvisioningRealm":{"token":"3ra3t1kf0k4ojl39lgqmhf015d"}}}*/
+
+// get two values
+// challenges
+// token
+
+4.
+send
+POST https://mobile.12306.cn/otsmobile/apps/services/api/MobileTicket/iphone/init HTTP/1.1
+Host: mobile.12306.cn
+Accept-Language: zh_CN
+WL-Instance-Id: vi3pgdstvu5n9s46nkps1kre85
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11B554a (359274384)/Worklight/6.0.0
+Proxy-Connection: keep-alive
+x-wl-platform-version: 6.0.0
+X-Requested-With: XMLHttpRequest
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+x-wl-app-version: 1.21
+Accept: text/javascript, text/html, application/xml, text/xml, */*
+Connection: keep-alive
+Cookie: BIGipServernginxformobile=3185115402.50215.0000; BIGipServerworklight=2664890634.56355.0000; JSESSIONID=00003BGCKYkhIaceaoertNzGTZR:18apno2sk
+Authorization: {"wl_deviceNoProvisioningRealm":{"ID":{"token":"3ra3t1kf0k4ojl39lgqmhf015d","app":{"id":"MobileTicket","version":"1.21"},"device":{"id":"0D3C2DEF-C80A-4910-92A4-76767F28ED93","os":"7.0.4","model":"iPhone4,1","environment":"iphone"},"custom":{}}}}
+Content-Length: 72
+Origin: file://
+Accept-Encoding: gzip, deflate
+
+skin=default&skinLoaderChecksum=&isAjaxRequest=true&x=0.8911960562691092
+
+// field authorization enhanced
+
+respond
+HTTP/1.1 200 OK
+Date: Thu, 09 Jan 2014 13:35:19 GMT
+Server: ngx_openresty/1.4.3.6
+Content-Type: application/json; charset=UTF-8
+Content-Length: 2456
+X-Powered-By: Servlet/3.0
+P3P: policyref="/w3c/p3p.xml", CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"
+Cache-Control: no-cache, no-store, must-revalidate
+Expires: Sat, 26 Jul 1997 05:00:00 GMT
+Content-Language: zh-CN
+X-Via: 1.1 yzdx124:0 (Cdn Cache Server V2.0)
+Connection: keep-alive
+
+/*-secure-
+{"gadgetProps":{"directUpdate":{"checksum":90808044,"updateSize":1377823,"updateUnpackedSize":4996384,"availableSkins":["default"]},"ENVIRONMENT":"iphone"},"userPrefs":{},"WL-Authentication-Success":{"wl_anonymousUserRealm":{"userId":"17433682-12bc-4ec9-a9eb-e85d8aca758b","attributes":{},"isUserAuthenticated":1,"displayName":"17433682-12bc-4ec9-a9eb-e85d8aca758b"},"wl_deviceNoProvisioningRealm":{"userId":"0D3C2DEF-C80A-4910-92A4-76767F28ED93","attributes":{"mobileClientData":"com.worklight.core.auth.ext.MobileClientData@91984eb8"},"isUserAuthenticated":1,"displayName":"0D3C2DEF-C80A-4910-92A4-76767F28ED93"},"wl_authenticityRealm":{"userId":"irq5os2ghq5hj954c74trau6k2","attributes":{},"isUserAuthenticated":1,"displayName":"irq5os2ghq5hj954c74trau6k2"},"wl_antiXSRFRealm":{"userId":"vi3pgdstvu5n9s46nkps1kre85","attributes":{},"isUserAuthenticated":1,"displayName":"vi3pgdstvu5n9s46nkps1kre85"}},"userInfo":{"wl_deviceNoProvisioningRealm":{"userId":"0D3C2DEF-C80A-4910-92A4-76767F28ED93","attributes":{"mobileClientData":"com.worklight.core.auth.ext.MobileClientData@91984eb8"},"isUserAuthenticated":1,"displayName":"0D3C2DEF-C80A-4910-92A4-76767F28ED93"},"wl_anonymousUserRealm":{"userId":"17433682-12bc-4ec9-a9eb-e85d8aca758b","attributes":{},"isUserAuthenticated":1,"displayName":"17433682-12bc-4ec9-a9eb-e85d8aca758b"},"WorklightConsole":{"userId":null,"attributes":{},"isUserAuthenticated":0,"displayName":null},"wl_deviceAutoProvisioningRealm":{"userId":null,"attributes":{},"isUserAuthenticated":0,"displayName":null},"wl_authenticityRealm":{"userId":"irq5os2ghq5hj954c74trau6k2","attributes":{},"isUserAuthenticated":1,"displayName":"irq5os2ghq5hj954c74trau6k2"},"wl_antiXSRFRealm":{"userId":"vi3pgdstvu5n9s46nkps1kre85","attributes":{},"isUserAuthenticated":1,"displayName":"vi3pgdstvu5n9s46nkps1kre85"},"wl_remoteDisableRealm":{"userId":null,"attributes":{},"isUserAuthenticated":0,"displayName":null},"SampleAppRealm":{"userId":null,"attributes":{},"isUserAuthenticated":0,"displayName":null},"SubscribeServlet":{"userId":null,"attributes":{},"isUserAuthenticated":0,"displayName":null},"WASLTPARealm":{"userId":null,"attributes":{},"isUserAuthenticated":0,"displayName":null},"DummyAuthRealm":{"userId":null,"attributes":{},"isUserAuthenticated":0,"displayName":null},"myserver":{"userId":"17433682-12bc-4ec9-a9eb-e85d8aca758b","attributes":{},"isUserAuthenticated":1,"displayName":"17433682-12bc-4ec9-a9eb-e85d8aca758b"}}}*/
+
+
+// many info
+
+
+5.
+login
+send
+POST https://mobile.12306.cn/otsmobile/apps/services/api/MobileTicket/iphone/query HTTP/1.1
+Host: mobile.12306.cn
+Accept-Language: zh_CN
+WL-Instance-Id: ldv0fuub3viuaanm6vnao7npgu
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11B554a (401274176)/Worklight/6.0.0
+x-wl-platform-version: 6.0.0
+X-Requested-With: XMLHttpRequest
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+x-wl-app-version: 1.21
+Accept: text/javascript, text/html, application/xml, text/xml, */*
+Connection: keep-alive
+Cookie: BIGipServernginxformobile=3319333130.50215.0000; BIGipServerworklight=2648113418.56355.0000; JSESSIONID=0000lYxxhol8k5u2i6InDjZ4ygU:18apnnued
+Proxy-Connection: keep-alive
+Content-Length: 602
+Origin: file://
+Accept-Encoding: gzip, deflate
+
+adapter=CARSMobileServiceAdapter&procedure=login&compressResponse=true&parameters=%5B%7B%22baseDTO.os_type%22%3A%22i%22%2C%22baseDTO.device_no%22%3A%22C78320C0-55E1-433A-BD11-34282B67151A%22%2C%22baseDTO.mobile_no%22%3A%22123444%22%2C%22baseDTO.time_str%22%3A%2220140109221522%22%2C%22baseDTO.check_code%22%3A%22415a54804607333e67c8b507447e5396%22%2C%22baseDTO.version_no%22%3A%221.1%22%2C%22baseDTO.user_name%22%3A%22bkp84335%22%2C%22password%22%3A%229145c72e8c11d6a90db5cac9615751b7%22%7D%5D&__wl_deviceCtxVersion=-1&__wl_deviceCtxSession=156405661389276442640&isAjaxRequest=true&x=0.8775163933169097
+
+//password use md5
+//md5(password)
+
+
+
+
+respond
+
+
+HTTP/1.1 200 OK
+Date: Thu, 09 Jan 2014 14:15:24 GMT
+Server: ngx_openresty/1.4.3.6
+Content-Length: 2514
+X-Powered-By: Servlet/3.0
+P3P: policyref="/w3c/p3p.xml", CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"
+Content-Language: zh-CN
+X-Via: 1.1 yzdx124:0 (Cdn Cache Server V2.0)
+Connection: keep-alive
+
+{"mobileNo":"18912952106","isSuccessful":true,"responseHeaders":{"Server":"Apache-Coyote\/1.1","X-Powered-By":"Servlet 2.5; JBoss-5.0\/JBossWeb-2.1","Transfer-Encoding":"chunked","Content-Type":"text\/plain;charset=UTF-8","Date":"Thu, 09 Jan 2014 14:15:23 GMT","Connection":"Keep-Alive","Set-Cookie":"ZL9Z76ArpV=217-65-8180; Path=\/"},"id_no":"32032119831230701X","succ_flag":"1","error_msg":"","name":"卜昆鹏","responseTime":20,"user_type":"1","id_type_code":"1","totalTime":20,"statusReason":"OK","passengerResult":[{"id_no":"320321195709167197","first_letter":"BQH","user_type":"1","mobile_no":"13395236798","id_type":"1","user_name":"卜庆华"},{"id_no":"32032119831230701X","first_letter":"BKP84335","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"卜昆鹏"},{"id_no":"430124196211024971","first_letter":"YQL","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"喻乾龙"},{"id_no":"430124196509269592","first_letter":"YBL","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"喻伯良"},{"id_no":"43012419860309496X","first_letter":"YJ","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"喻娟"},{"id_no":"430124199110104968","first_letter":"YX","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"喻晓"},{"id_no":"43012419660409492X","first_letter":"YYL","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"喻跃林"},{"id_no":"430124196503195027","first_letter":"ZYQ","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"张运清"},{"id_no":"430124196210044962","first_letter":"LYH","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"罗佑辉"},{"id_no":"430124193911044996","first_letter":"LQC","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"罗启长"},{"id_no":"430124196801244974","first_letter":"LYX","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"罗雨湘"},{"id_no":"430124198710013328","first_letter":"XWX","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"谢文兴"},{"id_no":"430124198711255011","first_letter":"HSJ","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"黄圣君"},{"id_no":"430124196708024969","first_letter":"HWH","user_type":"1","mobile_no":"18912952106","id_type":"1","user_name":"黄文辉"}],"last_msg":"欢迎使用铁路12306。","is_active":"Y","responseID":"2320994","email":"bspbsp000@163.com","user_name":"bkp84335","statusCode":200}
+
+// many user information
+
+
+
+6.
+try to query
+xuzhou - changsha
+2014.1.12
+all seat types
+one-way trip
+
+send
+GET https://mobile.12306.cn/otsmobile/invoke?adapter=CARSMobileServiceAdapter&procedure=queryLeftTicket&compressResponse=true&parameters=%5B%7B%22train_date%22%3A%2220140112%22%2C%22purpose_codes%22%3A%2200%22%2C%22from_station%22%3A%22XCH%22%2C%22to_station%22%3A%22CSQ%22%2C%22station_train_code%22%3A%22%22%2C%22start_time_begin%22%3A%220000%22%2C%22start_time_end%22%3A%222400%22%2C%22train_headers%22%3A%22QB%23%22%2C%22train_flag%22%3A%22%22%2C%22seat_type%22%3A%22M%22%2C%22seatBack_Type%22%3A%22%22%2C%22ticket_num%22%3A%22%22%2C%22baseDTO.os_type%22%3A%22i%22%2C%22baseDTO.device_no%22%3A%22C78320C0-55E1-433A-BD11-34282B67151A%22%2C%22baseDTO.mobile_no%22%3A%22123444%22%2C%22baseDTO.time_str%22%3A%2220140109222038%22%2C%22baseDTO.check_code%22%3A%22fe29adaee50787461cf4ad5dae0013be%22%2C%22baseDTO.version_no%22%3A%221.1%22%2C%22baseDTO.user_name%22%3A%22bkp84335%22%7D%5D&__wl_deviceCtxVersion=-1&__wl_deviceCtxSession=156405661389276442640&isAjaxRequest=true&x=0.6377454388421029 HTTP/1.1
+Host: mobile.12306.cn
+Accept-Language: zh_CN
+WL-Instance-Id: ldv0fuub3viuaanm6vnao7npgu
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11B554a (401274176)/Worklight/6.0.0
+x-wl-platform-version: 6.0.0
+X-Requested-With: XMLHttpRequest
+Accept: text/javascript, text/html, application/xml, text/xml, */*
+x-wl-app-version: 1.21
+Connection: keep-alive
+Proxy-Connection: keep-alive
+Cookie: BIGipServernginxformobile=3319333130.50215.0000; BIGipServerworklight=2648113418.56355.0000; JSESSIONID=0000lYxxhol8k5u2i6InDjZ4ygU:18apnnued
+Accept-Encoding: gzip, deflate
+
+
+respond
+HTTP/1.1 200 OK
+Date: Thu, 09 Jan 2014 14:20:41 GMT
+Server: ngx_openresty/1.4.3.6
+Content-Type: application/json; charset=UTF-8
+Content-Length: 1195
+X-Powered-By: Servlet/3.0
+P3P: policyref="/w3c/p3p.xml", CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"
+Cache-Control: no-cache, no-store, must-revalidate
+Expires: Sat, 26 Jul 1997 05:00:00 GMT
+Content-Language: zh-CN
+X-Via: 1.1 yzdx124:0 (Cdn Cache Server V2.0)
+Connection: keep-alive
+
+/*-secure-
+{"totalTime":129,"isSuccessful":true,"responseHeaders":{"Server":"Apache-Coyote\/1.1","X-Powered-By":"Servlet 2.5; JBoss-5.0\/JBossWeb-2.1","Transfer-Encoding":"chunked","Content-Type":"text\/plain;charset=UTF-8","Date":"Thu, 09 Jan 2014 14:20:40 GMT","Connection":"Keep-Alive","Set-Cookie":"ZL9Z76ArpV=217-65-8180; Path=\/"},"statusReason":"OK","ticketResult":[{"start_train_date":"20140111","to_station_telecode":"CSQ","end_station_telecode":"GIW","message":"","train_class_name":"","start_time":"00:06","flag":"","station_train_code":"K1201","arrive_time":"14:26","yp_info":"1013553000403775000010135500003024050000","from_station_telecode":"XCH","location_code":"K1","lishi":"14:20","yp_ex":"10401030","start_station_telecode":"YAK"},{"start_train_date":"20140112","to_station_telecode":"CSQ","end_station_telecode":"GZQ","message":"","train_class_name":"","start_time":"18:59","flag":"","station_train_code":"K1159","arrive_time":"12:26","yp_info":"1015253198404275000010152500063027050000","from_station_telecode":"XCH","location_code":"K1","lishi":"17:27","yp_ex":"10401030","start_station_telecode":"YAK"}],"succ_flag":"1","error_msg":"","responseTime":129,"statusCode":200}*/
+
+
+7. heartbeat
+send
+POST https://mobile.12306.cn/otsmobile/apps/services/api/MobileTicket/iphone/heartbeat HTTP/1.1
+Host: mobile.12306.cn
+Accept-Language: zh_CN
+WL-Instance-Id: ldv0fuub3viuaanm6vnao7npgu
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11B554a (401274176)/Worklight/6.0.0
+x-wl-platform-version: 6.0.0
+X-Requested-With: XMLHttpRequest
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+x-wl-app-version: 1.21
+Accept: text/javascript, text/html, application/xml, text/xml, */*
+Connection: keep-alive
+Cookie: BIGipServernginxformobile=3319333130.50215.0000; BIGipServerworklight=2648113418.56355.0000; JSESSIONID=0000lYxxhol8k5u2i6InDjZ4ygU:18apnnued
+Proxy-Connection: keep-alive
+Content-Length: 38
+Origin: file://
+Accept-Encoding: gzip, deflate
+
+isAjaxRequest=true&x=0.636213593184948
+
+
+respond
+HTTP/1.1 200 OK
+Date: Thu, 09 Jan 2014 14:21:29 GMT
+Server: ngx_openresty/1.4.3.6
+Content-Length: 0
+X-Powered-By: Servlet/3.0
+P3P: policyref="/w3c/p3p.xml", CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"
+Content-Language: zh-CN
+X-Via: 1.1 yzdx124:0 (Cdn Cache Server V2.0)
+Connection: keep-alive
+
+
+
+8. add passenger with auto-login
+actually invoke login data package
+send
+POST https://mobile.12306.cn/otsmobile/apps/services/api/MobileTicket/iphone/query HTTP/1.1
+Host: mobile.12306.cn
+Accept-Language: zh_CN
+WL-Instance-Id: fn4ib8pf3li67n02r6p7oabn26
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11B554a (374963360)/Worklight/6.0.0
+x-wl-platform-version: 6.0.0
+X-Requested-With: XMLHttpRequest
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+x-wl-app-version: 1.21
+Accept: text/javascript, text/html, application/xml, text/xml, */*
+Connection: keep-alive
+Cookie: BIGipServernginxformobile=3319333130.50215.0000; BIGipServerworklight=3755409674.56355.0000; JSESSIONID=0000uGjPK8IHNqxZaFkvHq6AS9q:18apo62te
+Proxy-Connection: keep-alive
+Content-Length: 602
+Origin: file://
+Accept-Encoding: gzip, deflate
+
+adapter=CARSMobileServiceAdapter&procedure=login&compressResponse=true&parameters=%5B%7B%22baseDTO.os_type%22%3A%22i%22%2C%22baseDTO.device_no%22%3A%22C78320C0-55E1-433A-BD11-34282B67151A%22%2C%22baseDTO.mobile_no%22%3A%22123444%22%2C%22baseDTO.time_str%22%3A%2220140109222821%22%2C%22baseDTO.check_code%22%3A%22cbc69baeab96f434acceffc481f3f096%22%2C%22baseDTO.version_no%22%3A%221.1%22%2C%22baseDTO.user_name%22%3A%22bkp84335%22%2C%22password%22%3A%229145c72e8c11d6a90db5cac9615751b7%22%7D%5D&__wl_deviceCtxVersion=-1&__wl_deviceCtxSession=119496581389277522854&isAjaxRequest=true&x=0.5765041378326714
+
+
+respond:
+HTTP/1.1 200 OK
+Date: Thu, 09 Jan 2014 14:28:23 GMT
+Server: ngx_openresty/1.4.3.6
+Content-Length: 2514
+X-Powered-By: Servlet/3.0
+P3P: policyref="/w3c/p3p.xml", CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"
+Content-Language: en-US
+X-Via: 1.1 yzdx124:0 (Cdn Cache Server V2.0)
+Connection: keep-alive
+
+{"mobileNo":"18912952106","isSuccessful":true,"responseHeaders":{"Server":"Apache-Coyote\/1.1","X-Powered-By":"Servlet 2.5; JBoss-5.0\/JBossWeb-2.1","Transfer-Encoding":"chunked","Content-Type":"text\/plain;charset=UTF-8","Date":"Thu, 09 Jan 2014 14:28:22 GMT","Connection":"Keep-Alive","Set-Cookie":"ZL9Z76ArpV=215-67-8180; Path=\/"},"id_no":"32032119831230701X","succ_flag":"1","error_msg":"","name":"卜昆鹏","responseTime":20,"user_type":"1","id_type_code":"1","totalTime":20,"statusReason":"OK","passengerResult":[{"first_letter":"BQH","id_no":"320321195709167197","mobile_no":"13395236798","user_type":"1","id_type":"1","user_name":"卜庆华"},{"first_letter":"BKP84335","id_no":"32032119831230701X","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"卜昆鹏"},{"first_letter":"YQL","id_no":"430124196211024971","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"喻乾龙"},{"first_letter":"YBL","id_no":"430124196509269592","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"喻伯良"},{"first_letter":"YJ","id_no":"43012419860309496X","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"喻娟"},{"first_letter":"YX","id_no":"430124199110104968","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"喻晓"},{"first_letter":"YYL","id_no":"43012419660409492X","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"喻跃林"},{"first_letter":"ZYQ","id_no":"430124196503195027","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"张运清"},{"first_letter":"LYH","id_no":"430124196210044962","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"罗佑辉"},{"first_letter":"LQC","id_no":"430124193911044996","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"罗启长"},{"first_letter":"LYX","id_no":"430124196801244974","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"罗雨湘"},{"first_letter":"XWX","id_no":"430124198710013328","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"谢文兴"},{"first_letter":"HSJ","id_no":"430124198711255011","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"黄圣君"},{"first_letter":"HWH","id_no":"430124196708024969","mobile_no":"18912952106","user_type":"1","id_type":"1","user_name":"黄文辉"}],"last_msg":"欢迎使用铁路12306。","is_active":"Y","responseID":"2825525","email":"bspbsp000@163.com","user_name":"bkp84335","statusCode":200}
+
+
