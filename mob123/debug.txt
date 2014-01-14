@@ -1,0 +1,9 @@
+ps -ax //get pid and process path
+otool -l <app> | grep crypt //get crypt offset, crypt size
+gdb -e ./<app> // load app
+(gdb) set sharedlibrary load-rules ".*" ".*" none	// don't know why set these args
+(gdb) set inferior-auto-start-dyld off
+(gdb) set sharedlibrary preload-libraries off
+(gdb) rb doModInitFunctions // break at this function
+(gdb) info sh // find the base offset
+(gdb) dump memory <file> [base] [base+crypt size]
