@@ -76,7 +76,19 @@ X-Via: 1.1 yzdx124:0 (Cdn Cache Server V2.0)
 Connection: close
 
 /*-secure-
-{"challenges":{"wl_authenticityRealm":{"WL-Challenge-Data":"irq5os2ghq5hj954c74trau6k2+23.507-9.852-31.807 "},"wl_antiXSRFRealm":{"WL-Instance-Id":"vi3pgdstvu5n9s46nkps1kre85"}}}*/
+{
+	"challenges":
+	{
+		"wl_authenticityRealm":
+		{
+			"WL-Challenge-Data":"irq5os2ghq5hj954c74trau6k2+23.507-9.852-31.807 "
+		},
+		"wl_antiXSRFRealm":
+		{
+			"WL-Instance-Id":"vi3pgdstvu5n9s46nkps1kre85"
+		}
+	}
+}*/
 
 
 //new cookie
