@@ -7,3 +7,8 @@ gdb -e ./<app> // load app
 (gdb) rb doModInitFunctions // break at this function
 (gdb) info sh // find the base offset
 (gdb) dump memory <file> [base] [base+crypt size]
+
+problems:
+1. ida got some errors during disassembly
+2. ldid -S switch returned error, -s switch worked but cannot run on device
+3. gdb running the unmodified app will stop due to sigabort
