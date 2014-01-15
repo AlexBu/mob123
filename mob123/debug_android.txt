@@ -30,16 +30,16 @@ _L1:
 
 //SecurityUtils.hashDataFromJSON
 
-public static String hashDataFromJSON(Context context, JSONArray jsonarray)
+public static String hashDataFromJSON(Context context, JSONArray jsonarray)	//jsonarray={"irq5os2ghq5hj954c74trau6k2", {23.507, 9.852, 31.807}}
         throws JSONException, UnsupportedEncodingException
     {
-        String s = ((String)jsonarray.get(0)).split(",")[0];
-        JSONArray jsonarray1 = (JSONArray)jsonarray.get(1);
+        String s = ((String)jsonarray.get(0)).split(",")[0];//s="irq5os2ghq5hj954c74trau6k2"
+        JSONArray jsonarray1 = (JSONArray)jsonarray.get(1);jsonarray1={23.507, 9.852, 31.807}
         ArrayList arraylist = new ArrayList();
         int i = 0;
         do
         {
-            int j = jsonarray1.length();
+            int j = jsonarray1.length();//j=3
             if(i < j)
             {
                 String s1 = jsonarray1.getString(i);
@@ -48,10 +48,10 @@ public static String hashDataFromJSON(Context context, JSONArray jsonarray)
             } else
             {
                 String as[] = new String[0];
-                String as1[] = (String[])arraylist.toArray(as);
+                String as1[] = (String[])arraylist.toArray(as); //as1={"23.507", "9.852", "31.807"}
                 String s2 = Base64.encode(kpg(context, as1), "UTF-8").replaceAll("\n", "");
                 StringBuilder stringbuilder = new StringBuilder();
-                String s3 = s.trim();
+                String s3 = s.trim();//s3="irq5os2ghq5hj954c74trau6k2"
                 return hashData(stringbuilder.append(s3).append(s2).toString(), "SHA-1");
             }
         } while(true);
@@ -72,7 +72,7 @@ _L1:
     }
 
 
-public static byte[] kpg(Context paramContext, String[] paramArrayOfString)
+public static byte[] kpg(Context paramContext, String[] paramArrayOfString) //paramArrayOfString ={"23.507", "9.852", "31.807"}
   {
     StringBuffer localStringBuffer;
     try
