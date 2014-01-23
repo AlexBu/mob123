@@ -27,3 +27,15 @@ open apk and login
 
 use jad to decompile class to java:
 jad -o -r -s java -d <output folder> <input folder/**/*.class>  
+
+
+
+debug with jdb
+
+set wait for debugger option in emu
+set path for jdb and adb
+adb shell ps	// get pid
+adb jdwp	// make sure the process in the list
+adb forward tcp:<port num> jdwp:$PID // port num input as wish
+jdb –sourcepath .\src -connect com.sun.jdi.SocketAttach:hostname=localhost,port=<port num>
+
