@@ -23,3 +23,7 @@ adb install <apk file>
 set proxy:
 in emu, system setting, apn, proxy, set directly
 open apk and login
+
+
+use jad to decompile class to java:
+jad -o -r -s java -d <output folder> <input folder/**/*.class>  
