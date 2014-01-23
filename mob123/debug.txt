@@ -20,3 +20,6 @@ android progress:
 install SDK
 run emulator
 adb install <apk file>
+set proxy:
+in emu, system setting, apn, proxy, set directly
+open apk and login
